@@ -130,6 +130,7 @@ celerybeat.pid
 # Environments
 .env
 .venv
+.zaps_provider
 env/
 venv/
 ENV/
