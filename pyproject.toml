@@ -6,7 +6,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "apache-airflow-provider-zaps"
+name = "apache-airflow-providers-zaps"
 authors = [
     {name="Zaps Engineering", email="jorge.zapata.munoz.bd@gmail.com"},
 ]
