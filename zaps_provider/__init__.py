@@ -5,7 +5,7 @@ __version__ = "1.0.0"
 
 def get_provider_info():
     return {
-        "package-name": "apache-airflow-providers-zapsthne i have to",
+        "package-name": "apache-airflow-providers-zaps",
         "name": "Zaps",
         "description": "Custom Airflow provider with Zaps-specific integrations",
         "versions": [__version__],
