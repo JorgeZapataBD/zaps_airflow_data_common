@@ -1,0 +1,37 @@
+name: Airflow Providers CI
+
+on:
+  push:
+    branches-ignore:
+      - main
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      CONF_PYTHON_VERSION: "3.11"
+      CONF_AIRFLOW_VERSION: "3.0.2"
+      AIRFLOW_EXTRAS: "google,google-auth"
+      CONSTRAINT_URL: "https://raw.githubusercontent.com/apache/airflow/constraints-3.0.2/constraints-3.11.txt"
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.CONF_PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          pip3 install "apache-airflow[${AIRFLOW_EXTRAS}]==${CONF_AIRFLOW_VERSION}" --constraint "${CONSTRAINT_URL}"
+          pip3 install -r requirements.txt
+
+      - name: Run tests with pytest
+        run: |
+          pytest
+    

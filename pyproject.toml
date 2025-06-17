@@ -1,0 +1,60 @@
+[build-system]
+requires = [
+    "setuptools",
+    "wheel"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "apache-airflow-providers-zaps"
+authors = [
+    {name="Zaps Engineering", email="jorge.zapata.munoz.bd@gmail.com"},
+]
+maintainers = [
+    {name="Zaps Engineering", email="jorge.zapata.munoz.bd@gmail.com"},
+]
+license = { text = "Apache License 2.0" }
+description = "Custom Provider package apache-airflow-providers-zaps for Apache Airflow"
+keywords = [ "airflow-provider", "zaps", "airflow", "integration" ]
+classifiers = [
+    "Intended Audience :: Developers",
+    "Framework :: Apache Airflow",
+    "Framework :: Apache Airflow :: Provider",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: System :: Monitoring",
+]
+dynamic = [
+    "version"
+]
+requires-python = ">=3.11"
+dependencies = [
+    "apache-airflow>=3.0.0",
+    "apache-airflow-providers-google>=15.1.0",
+    "google-cloud-firestore>=2.20.2"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/JorgeZapataBD/zaps_airflow_data_common"
+"Repository" = "https://github.com/JorgeZapataBD/zaps_airflow_data_common"
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+
+[project.entry-points.apache_airflow_provider]
+provider_info = "zaps_provider.__init__:get_provider_info"
+
+[tool.setuptools]
+include-package-data = false
+
+[tool.setuptools.dynamic]
+version = { attr = "zaps_provider.__version__" }
+
+[tool.setuptools.packages.find]
+exclude = [
+    "*tests.*",
+    "*tests"
+]
